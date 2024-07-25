@@ -47,6 +47,10 @@ table 50174 "Student Application"
             OptionMembers = ,Pending,Approved;
             Editable = False;
         }
+        field(11; "Certificate"; Blob)
+        {
+            Caption = 'Certificate';
+        }
         field(10; "Date Of Application"; DateTime)
         {
             Caption = 'Date Of Application';

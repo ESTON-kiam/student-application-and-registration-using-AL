@@ -48,12 +48,44 @@ page 50185 "Student Application"
                 }
                 field(Status; Rec.Status)
                 {
-                    ApplicationArea = ALL;
+                    ApplicationArea = All;
+                }
+                field("Certificate"; Rec.Certificate)
+                {
+                    ApplicationArea = All;
                 }
                 field("Date Of Application"; Rec."Date Of Application")
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                 }
+            }
+        }
+    }
+
+    actions
+    {
+        area(processing)
+        {
+            action(UploadCertificate)
+            {
+                Caption = 'Upload Certificate';
+                Image = Import;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    InStream: InStream;
+                    OutStream: OutStream;
+                    FromFile: Text;
+                begin
+                    if UploadIntoStream('Upload Certificate', '', 'All Files (*.*)|*.*', FromFile, InStream) then begin
+                        Rec.Certificate.CreateOutStream(OutStream);
+                        CopyStream(OutStream, InStream);
+                        Rec.Modify(true);
+                        Message('Certificate uploaded successfully.');
+                    end;
+                end;
             }
         }
     }

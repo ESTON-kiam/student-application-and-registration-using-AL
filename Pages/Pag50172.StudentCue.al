@@ -8,9 +8,9 @@ page 50172 "Student Cue"
     {
         area(content)
         {
-            cuegroup(General)
+            cuegroup(Students)
             {
-                Caption = 'General';
+                Caption = 'Students';
 
                 field("Registered Students"; Rec."Registered Students")
                 {
